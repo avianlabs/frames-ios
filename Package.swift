@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Frames",
+    name: "Checkout",
     defaultLocalization: "en",
     platforms: [
         .macOS(.v10_12),
@@ -10,18 +10,11 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Frames",
-            targets: ["Frames"]
-        ),
-        .library(
             name: "Checkout",
             targets: ["Checkout"]
         )
     ],
     dependencies: [
-        .package(
-            url: "https://github.com/marmelroy/PhoneNumberKit.git",
-            exact: "3.5.9"),
         .package(
             url: "https://github.com/checkout/checkout-risk-sdk-ios.git",
             exact: "3.0.2"),
@@ -32,28 +25,16 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Frames",
-            dependencies: [
-                .product(name: "CheckoutEventLoggerKit",
-                         package: "checkout-event-logger-ios-framework"),
-                .product(name: "Risk", package: "checkout-risk-sdk-ios"),
-                "PhoneNumberKit",
-                "Checkout"
-            ],
-            path: "Source",
-            exclude: ["Suppporting Files/Info.plist"],
-            resources: [
-                .process("Resources")
-            ]
-        ),
-        .target(
             name: "Checkout",
             dependencies: [
                 .product(name: "CheckoutEventLoggerKit",
                          package: "checkout-event-logger-ios-framework"),
                 .product(name: "Risk", package: "checkout-risk-sdk-ios"),
             ],
-            path: "Checkout/Source"
+            path: "Checkout/Source",
+            resources: [
+                .process("Resources")
+            ]
         ),
         .testTarget(
             name: "CheckoutTests",
@@ -61,18 +42,6 @@ let package = Package(
                 "Checkout"
             ],
             path: "CheckoutTests"
-        ),
-        .testTarget(
-            name: "FramesTests",
-            dependencies: [
-              "Frames",
-              "Checkout"
-            ],
-            path: "Tests",
-            exclude: ["Info.plist"],
-            resources: [
-                .process("Fixtures")
-            ]
         )
     ],
     swiftLanguageVersions: [.v5]
