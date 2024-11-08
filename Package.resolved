@@ -26,15 +26,6 @@
         "revision" : "ceb8b845ec99727ee9f78869a51688c6daa16bd8",
         "version" : "2.2.0"
       }
-    },
-    {
-      "identity" : "phonenumberkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/marmelroy/PhoneNumberKit.git",
-      "state" : {
-        "revision" : "6edd6e38a30aec087cb97f7377edf876c29a427e",
-        "version" : "3.5.9"
-      }
     }
   ],
   "version" : 2
